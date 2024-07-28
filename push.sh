@@ -14,6 +14,6 @@ git commit -m "$commit_message"
 
 # Push changes to the repository
 echo "Pushing changes to GitHub..."
-git push origin main
+git push .
 
 echo "Done!"
