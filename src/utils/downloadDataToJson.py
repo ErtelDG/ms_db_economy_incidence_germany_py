@@ -7,7 +7,7 @@ from utils import logFiles, rootPath
 
 def download_and_convert_to_json(links):
     root = rootPath.get_project_root('root.md')
-    directory = os.path.join(root, 'data')
+    directory = os.path.join(root, 'src', 'data')
 
     if not os.path.exists(directory):
         os.makedirs(directory)

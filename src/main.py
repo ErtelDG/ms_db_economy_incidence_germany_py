@@ -13,12 +13,12 @@ def updateRawData():
         links = extractCsvLinks.extract_csv_links(url)
         downloadDataToJson.download_and_convert_to_json(links)
         logFiles.logger.info("Update raw data ends")
-        
-        time.sleep(2592000)  # 30 Tage
+        time.sleep(2592000)  # 30 days
 
 def main():
-    updateRawData()   
-     
+    #updateRawData()  
+    print("Hello") 
+    
 
 if __name__ == "__main__":
     main()

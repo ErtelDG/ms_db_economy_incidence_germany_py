@@ -7,7 +7,7 @@ from utils import rootPath
 
 root = rootPath.get_project_root('root.md')
 
-log_dir = os.path.join(root, 'log')
+log_dir = os.path.join(root, 'src', 'log')
 log_file = os.path.join(log_dir, 'logfile.log')
 error_log_file = os.path.join(log_dir, 'error.log')
 
