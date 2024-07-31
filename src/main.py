@@ -1,5 +1,7 @@
-import time
+import time, threading
+from api import endpointsList, dataList
 from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles
+from flask import Flask
 
 
 def updateRawData():
@@ -15,9 +17,30 @@ def updateRawData():
         logFiles.logger.info("Update raw data ends")
         time.sleep(2592000)  # 30 days
 
+
+threatUpdateRawData = threading.Thread(target=updateRawData)
+
+
 def main():
-    #updateRawData()  
-    print("Hello") 
+    #threatUpdateRawData.start()
+
+    host='0.0.0.0'
+    port=5000
+
+    app = Flask(__name__)
+
+    @app.route(endpointsList.endpoints['/'].get('path'))
+    def home():
+        return endpointsList.endpoints
+        
+    
+    @app.route(endpointsList.endpoints['/list'].get('path'))
+    def getList():
+        return dataList.getList()
+    
+    print(f'Server started on: http://{host}:{port}')
+    app.run(host, port)
+
     
 
 if __name__ == "__main__":

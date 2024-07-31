@@ -36,7 +36,7 @@ def download_and_convert_to_json(links):
                 #Save data in JSON
                 json_objects = json.loads(json_data)
                 id = int(str(time.time()).replace('.', ''))
-                result = {"id":id, "title":link['title'], "name":name,"data": json_objects}
+                result = {"id":id, "title":link['title'], "nameJson":name,"data": json_objects}
                 
                 # Save JSON
                 json_file_path = os.path.join(directory, f'{name}.json')
