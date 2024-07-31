@@ -1,7 +1,7 @@
 import time, threading
-from api import endpointsList, dataList
-from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles
-from flask import Flask
+from api import endpointsList, dataList, getDataId
+from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles, rootPath
+from flask import Flask, jsonify, request
 
 
 def updateRawData():
@@ -22,7 +22,7 @@ threatUpdateRawData = threading.Thread(target=updateRawData)
 
 
 def main():
-    #threatUpdateRawData.start()
+    threatUpdateRawData.start()
 
     host='0.0.0.0'
     port=5000
@@ -38,6 +38,12 @@ def main():
     def getList():
         return dataList.getList()
     
+
+    @app.route(endpointsList.endpoints['/data'].get('path'))
+    def getDataID():
+        return getDataId.getDataID(request.args.get('id'))
+          
+
     print(f'Server started on: http://{host}:{port}')
     app.run(host, port)
 

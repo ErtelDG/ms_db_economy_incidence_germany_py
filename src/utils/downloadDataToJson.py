@@ -39,7 +39,7 @@ def download_and_convert_to_json(links):
                 result = {"id":id, "title":link['title'], "nameJson":name,"data": json_objects}
                 
                 # Save JSON
-                json_file_path = os.path.join(directory, f'{name}.json')
+                json_file_path = os.path.join(directory, f'{id}.json')
                 with open(json_file_path, 'w', encoding='utf-8') as json_file:
                     json.dump(result, json_file, ensure_ascii=False, indent=4)
 
