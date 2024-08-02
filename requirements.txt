@@ -4,6 +4,7 @@ blinker==1.8.2
 certifi==2024.7.4
 charset-normalizer==3.3.2
 click==8.1.7
+deptry==0.18.0
 Flask==3.0.3
 h11==0.14.0
 h2==4.1.0
@@ -15,7 +16,9 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 numpy==2.0.1
+packaging==24.1
 pandas==2.2.2
+pip-check-reqs==2.5.3
 priority==2.0.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
