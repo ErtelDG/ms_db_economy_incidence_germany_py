@@ -25,7 +25,7 @@ def main():
     threatUpdateRawData.start()
 
     host='0.0.0.0'
-    port=5000
+    port=80
 
     app = Flask(__name__)
 
