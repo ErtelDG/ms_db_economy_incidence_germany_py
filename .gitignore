@@ -3,3 +3,4 @@ data
 log
 src/utils/__pycache__
 .venv
+push.sh
