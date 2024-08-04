@@ -1,3 +1,4 @@
+import json
 import time, threading
 from api import endpointsList, dataList, getDataId
 from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles, rootPath
@@ -12,8 +13,8 @@ def updateRawData():
         while url == None:
             url = loadUrl.load_url_from_env()
             time.sleep(5)
-        links = extractCsvLinks.extract_csv_links(url)
-        downloadDataToJson.download_and_convert_to_json(links)
+        csv_links = extractCsvLinks.extract_csv_links(url)
+        downloadDataToJson.download_and_convert_to_json(csv_links)
         logFiles.logger.info("Update raw data ends")
         time.sleep(2592000)  # 30 days
 
@@ -25,7 +26,7 @@ def main():
     threatUpdateRawData.start()
 
     host='0.0.0.0'
-    port=80
+    port=5000
 
     app = Flask(__name__)
 
