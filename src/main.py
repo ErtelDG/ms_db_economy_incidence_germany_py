@@ -3,6 +3,7 @@ import time, threading
 from api import endpointsList, dataList, getDataId
 from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles, rootPath
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 
 def updateRawData():
@@ -37,6 +38,7 @@ def main():
     port=5000
 
     app = Flask(__name__)
+    CORS(app)
 
     @app.route(endpointsList.endpoints['/'].get('path'))
     def home():
