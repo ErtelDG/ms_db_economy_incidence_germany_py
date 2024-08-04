@@ -1,7 +1,6 @@
-import json
 import time, threading
 from api import endpointsList, dataList, getDataId
-from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles, rootPath
+from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
