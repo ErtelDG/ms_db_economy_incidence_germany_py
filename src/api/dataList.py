@@ -22,10 +22,16 @@ def getList():
                             json_content = json.load(file)
                             # Extrahiere id, title und name und füge sie dem dict_contents hinzu
                             id = str(json_content['id'])
+                            rootCategory = str(json_content['economy_incidence'])
+                            category = str(json_content['category'])
+                            subcategory = str(json_content['subcategory'])
                             title = json_content['title']
                             nameJson = json_content['nameJson']
                             dict_contents[nameJson] = {
                             "id":id,
+                            "rootCategory": rootCategory,
+                            "category": category,
+                            "subcategory":subcategory,
                             "title": title,
                             "nameJson": nameJson
                             }
