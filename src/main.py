@@ -14,7 +14,15 @@ def updateRawData():
             url = loadUrl.load_url_from_env()
             time.sleep(5)
         csv_links = extractCsvLinks.extract_csv_links(url)
-        downloadDataToJson.download_and_convert_to_json(csv_links)
+
+        # Check, structure is valid?
+        if (csv_links and isinstance(csv_links, dict) and
+            all(isinstance(v, dict) and all(isinstance(s, dict) and all(isinstance(p, list) and all(isinstance(link, dict) and 'url' in link for link in p) for p in s.values()) for s in v.values()) for v in csv_links.values())):
+            logFiles.logger.info("CSV links structure is valid. Starting download and conversion.")
+            downloadDataToJson.download_and_convert_to_json(csv_links)
+        else:
+            logFiles.logger.error("Invalid CSV links structure.")
+
         logFiles.logger.info("Update raw data ends")
         time.sleep(2592000)  # 30 days
 

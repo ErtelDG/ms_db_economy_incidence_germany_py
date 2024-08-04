@@ -1,6 +1,8 @@
 .vscode
 data
+backup
 log
 src/utils/__pycache__
 .venv
 push.sh
+src/utils/csv_links.json
