@@ -72,7 +72,7 @@ def download_and_convert_to_json(structure):
                         # Download csv
                         response = requests.get(link['url'])
                         time.sleep(2)  # Be polite and avoid overwhelming the server
-                        response.encoding = 'utf-8'
+                        #response.encoding = 'utf-8'
 
                         if response.status_code == 200:
                             data = StringIO(response.text)
@@ -85,7 +85,7 @@ def download_and_convert_to_json(structure):
                                 df = pd.read_csv(data, delimiter=';', decimal=',')
                             
                             # Convert DataFrame to JSON
-                            json_data = df.to_json(orient='records', force_ascii=False)
+                            json_data = df.to_json(orient='records')
 
                             # Save data in JSON
                             json_objects = json.loads(json_data)
