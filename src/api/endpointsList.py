@@ -12,7 +12,7 @@ endpoints = {
             "description": "Return an overview of all data endpoints."
         },
         "/data": {
-            "endpoint": "/data?<int:id>",
+            "endpoint": "/data?id=<int:id>",
             "path": "/data",
             "title": "Ger data for id. Id as int",
             "description": "Return data as JSON for the request ID"

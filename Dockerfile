@@ -19,5 +19,7 @@ RUN chown -R appuser:appgroup /usr/src/app
 # Switch to the new user
 USER appuser
 
+EXPOSE 5000
+
 # Set the command to run the application
 CMD ["python", "./src/main.py"]
