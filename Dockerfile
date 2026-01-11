@@ -1,25 +1,16 @@
-FROM python:3.12.4-slim
+FROM python:3.12-slim
 
-# Create a new user
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+WORKDIR /app
 
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Copy and install dependencies
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
-COPY . .
+COPY src/ ./src/
+COPY root.md .
 
-# Change ownership of the application directory to the new user
-RUN chown -R appuser:appgroup /usr/src/app
-
-# Switch to the new user
-USER appuser
+ENV ECONOMY_DATA_GER_DB_APP_HOST=0.0.0.0
+ENV ECONOMY_DATA_GER_DB_APP_PORT=5000
 
 EXPOSE 5000
 
-# Set the command to run the application
-CMD ["python", "./src/main.py"]
+CMD ["python", "src/main.py"]

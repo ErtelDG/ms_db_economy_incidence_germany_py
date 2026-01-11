@@ -1,4 +1,4 @@
-import time, threading
+import time, threading, os
 from api import endpointsList, dataList, getDataId
 from utils import loadUrl, extractCsvLinks, downloadDataToJson,logFiles
 from flask import Flask, jsonify, request
@@ -33,8 +33,8 @@ threatUpdateRawData = threading.Thread(target=updateRawData)
 def main():
     threatUpdateRawData.start()
 
-    host='0.0.0.0'
-    port=5000
+    host=os.getenv('ECONOMY_DATA_GER_DB_APP_HOST', '0.0.0.0')
+    port=int(os.getenv('ECONOMY_DATA_GER_DB_APP_PORT', 5000))
 
     app = Flask(__name__)
     CORS(app)

@@ -4,5 +4,10 @@ backup
 log
 src/utils/__pycache__
 .venv
+venv
 push.sh
 src/utils/csv_links.json
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd

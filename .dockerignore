@@ -1,5 +1,16 @@
 .git
-.venv
+.venv/
+venv/
+env/
+  
 .vscode
 .gitignore
 push.sh
+./src/data/*
+./src/backup/*
+./src/log/*
+./src/utils/csv_links.json
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd

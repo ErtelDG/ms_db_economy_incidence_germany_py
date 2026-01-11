@@ -4,13 +4,13 @@ import time
 from dotenv import load_dotenv
 from utils import logFiles
 
-env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.env')
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config')
 
 def load_url_from_env():
 
-    if not os.path.exists(".env"):
-        logFiles.logger.info(f"Create .env file in root")
-        with open('.env', 'w') as f:
+    if not os.path.exists("config"):
+        logFiles.logger.info(f"Create config file in root")
+        with open('config', 'w') as f:
             f.write("")
   
     if os.path.exists(env_path):
@@ -20,14 +20,14 @@ def load_url_from_env():
             logFiles.logger.info(f"URL loaded successfully: {url}")
             return url
         else:
-            logFiles.logger.error("No URL found in the .env file.")
+            logFiles.logger.error("No URL found in the config file.")
             url = prompt_for_valid_url()
             save_url_to_env(url)
             time.sleep(2)
             return None
     else:
-        print(".env file not found in root directory.")
-        logFiles.logger.error("..env file not found in root directory.")
+        print("config file not found in root directory.")
+        logFiles.logger.error(".config file not found in root directory.")
         return None
 
 def prompt_for_valid_url():
@@ -35,7 +35,7 @@ def prompt_for_valid_url():
         url = input("Please enter a valid URL: ")
         if url.startswith('http://') or url.startswith('https://'):
             print(f"URL is valid, save: {url}")
-            logFiles.logger.info(f"URL is valid, save in .env: {url}")
+            logFiles.logger.info(f"URL is valid, save in config: {url}")
             return url
         else:
             print("Invalid URL. Please try again. Example https://example.com")
@@ -44,5 +44,5 @@ def prompt_for_valid_url():
 def save_url_to_env(url):
     with open(env_path, 'w') as f:
         f.write(f"URL={url}\n")
-    print(f"URL was saved in the .env file: {url}")
-    logFiles.logger.info(f"URL was saved in the .env file: {url}")
+    print(f"URL was saved in the config file: {url}")
+    logFiles.logger.info(f"URL was saved in the config file: {url}")
